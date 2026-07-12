@@ -36,7 +36,7 @@ export default function Home() {
             </h1>
             <p className="animate-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
               Built for Washington State Voc firm owners and managers—align counselors,
-              unblock ops, stay compliant, and pay people accurately.
+              unblock ops, stay compliant, and automate payroll.
             </p>
             <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-3">
               <a

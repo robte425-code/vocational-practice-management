@@ -21,9 +21,9 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
     <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Dashboard" />
       <MockTicker />
-      <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-t-0">
-          <div className="mb-3 flex items-center justify-between gap-2">
+      <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr] md:items-stretch">
+        <div className="flex min-h-0 flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:h-0 md:min-h-full md:border-t-0">
+          <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
             <div className="flex min-w-0 items-center gap-2.5">
               <div className="h-7 w-1 shrink-0 rounded-full bg-amber-400" aria-hidden />
               <p className="text-base font-semibold tracking-tight text-stone-900">
@@ -32,7 +32,7 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             </div>
             <span className="shrink-0 text-[11px] font-medium text-amber-700">Archive</span>
           </div>
-          <ul className="max-h-[28rem] space-y-2.5 overflow-y-auto pr-0.5">
+          <ul className="min-h-0 flex-1 space-y-2.5 overflow-y-auto pr-0.5">
             {[
               {
                 title:
@@ -46,18 +46,6 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
                 body: "If you are attending this week's vocational conference, thank you! Just a reminder: save your hotel and meal receipts for reimbursement. Actual itemized receipts are required.",
                 published: "Jul 8",
                 isNew: true,
-              },
-              {
-                title: "AI Note-Taking and AI Summary Tools During Meetings",
-                body: "This morning, we spoke with our liability carrier and the risk management firm they directed us to contact. Please review the new Internal Memo before using AI note-taking tools in meetings.",
-                published: "Jul 2",
-                isNew: false,
-              },
-              {
-                title: "QA Plan Addendum",
-                body: "A QA Plan Addendum has been prepared in response to our recent QA Validation meeting with L&I. Please review the Plan Addendum, which will also be reviewed during our monthly meeting.",
-                published: "Jun 30",
-                isNew: false,
               },
               {
                 title: "Vocational Provider Newsletter",
@@ -97,7 +85,7 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             ))}
           </ul>
         </div>
-        <div className="border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-l md:border-t-0">
+        <div className="flex flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-l md:border-t-0">
           <div className="mb-3 flex items-center gap-2.5">
             <div className="h-7 w-1 shrink-0 rounded-full bg-emerald-400" aria-hidden />
             <p className="text-base font-semibold tracking-tight text-stone-900">Key dates</p>

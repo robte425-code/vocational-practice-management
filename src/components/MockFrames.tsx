@@ -53,12 +53,6 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
                 published: "Jun 30",
                 isNew: false,
               },
-              {
-                title: "Work Products - JAs",
-                body: "Job Analysis (JA) Development — Common Errors and Best Practices. During our review of JAs in the JA bank, we identified several recurring errors in JA development.",
-                published: "Jun 25",
-                isNew: false,
-              },
             ].map((item) => (
               <li
                 key={item.title}

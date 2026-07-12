@@ -46,21 +46,70 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             </div>
           ))}
         </div>
-        <div className="border-t border-[var(--line)] bg-mist/40 p-5 md:border-l md:border-t-0">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft/60">
-            Key dates
-          </p>
-          <ul className="mt-4 space-y-3">
+        <div className="border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-l md:border-t-0">
+          <div className="mb-3 flex items-center gap-2.5">
+            <div className="h-7 w-1 shrink-0 rounded-full bg-emerald-400" aria-hidden />
+            <p className="text-base font-semibold tracking-tight text-stone-900">Key dates</p>
+          </div>
+          <ul className="space-y-2.5">
             {[
-              { days: "4", label: "On-the-Job Recovery Webinar" },
-              { days: "25", label: "Monthly Meeting - Mandatory" },
-              { days: "27", label: "Submit July Closed Case Info." },
+              {
+                title: "On-the-Job Recovery Webinar",
+                body: "Update: Time is now 12:00–1:00 PM. L&I is hosting a webinar for vocational providers.",
+                published: "Jun 2",
+                dateLabel: "Event date:",
+                dateValue: "Jul 15, 2026 at 12:00 PM",
+                timeLeft: "4 days left",
+                soon: true,
+              },
+              {
+                title: "Monthly Meeting - Mandatory",
+                body: "All monthly meetings will be mandatory starting August 5. First Wednesday of each month.",
+                published: "Jul 1",
+                dateLabel: "Event date:",
+                dateValue: "Aug 5, 2026 at 12:00 PM",
+                timeLeft: "25 days left",
+                soon: false,
+              },
+              {
+                title: "Submit July Closed Case Info.",
+                body: "Submit the completed case closure template via Requests.",
+                published: "Jul 7",
+                dateLabel: "Due date:",
+                dateValue: "Aug 7, 2026 at 12:00 PM",
+                timeLeft: "27 days left",
+                soon: false,
+              },
             ].map((d) => (
-              <li key={d.label} className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white font-display text-lg text-copper">
-                  {d.days}
-                </span>
-                <span className="text-sm leading-snug text-ink-soft">{d.label}</span>
+              <li
+                key={d.title}
+                className="overflow-hidden rounded-xl border border-stone-200/80 bg-white shadow-sm"
+              >
+                <div className="space-y-1.5 px-3 pt-3 pb-2">
+                  {d.soon && (
+                    <span className="inline-block rounded-full bg-amber-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                      Soon
+                    </span>
+                  )}
+                  <div className="flex items-baseline justify-between gap-2">
+                    <p className="min-w-0 flex-1 text-[13px] font-semibold leading-snug text-stone-900">
+                      {d.title}
+                    </p>
+                    <span className="shrink-0 text-[10px] text-stone-400">
+                      Published: {d.published}
+                    </span>
+                  </div>
+                  <p className="line-clamp-2 text-[11px] leading-relaxed text-stone-600">{d.body}</p>
+                </div>
+                <div className="flex flex-wrap items-center justify-between gap-1.5 border-t border-stone-200/60 bg-stone-50 px-3 py-2">
+                  <p className="min-w-0 text-[10px] font-medium text-stone-900">
+                    <span className="font-semibold">{d.dateLabel}</span>{" "}
+                    <span className="font-normal text-stone-700">{d.dateValue}</span>
+                  </p>
+                  <span className="shrink-0 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold text-emerald-800">
+                    {d.timeLeft}
+                  </span>
+                </div>
               </li>
             ))}
           </ul>

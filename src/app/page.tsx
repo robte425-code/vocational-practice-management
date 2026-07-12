@@ -94,7 +94,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-mist/75">
               From the morning dashboard to payroll and HR, Vocational Practice Management keeps
-              your firm aligned without bolting on five unrelated tools.
+              your firm aligned without using and paying for five unrelated tools.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

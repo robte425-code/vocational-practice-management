@@ -194,18 +194,54 @@ export function HotlineMock({ className = "" }: { className?: string }) {
   return (
     <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Voc Hotline" />
-      <div className="space-y-3 p-5">
-        <div className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-ink px-4 py-3 text-sm text-mist">
-          What documentation is required when closing a vocational plan under WAC 296-19A?
+      <div className="max-h-[28rem] space-y-3 overflow-y-auto p-5">
+        <div className="ml-auto max-w-[90%] rounded-2xl rounded-br-md bg-ink px-4 py-3 text-sm text-mist">
+          Is mileage reimbursement allowed in Skill Enhancement Training?
         </div>
-        <div className="max-w-[90%] rounded-2xl rounded-bl-md border border-[var(--line)] bg-paper px-4 py-3 text-sm text-ink-soft">
+        <div className="max-w-[95%] space-y-3 rounded-2xl rounded-bl-md border border-[var(--line)] bg-paper px-4 py-3 text-sm leading-relaxed text-ink-soft">
           <p>
-            Closing a vocational plan generally requires a closing report that documents services
-            provided, outcomes, and the worker’s status relative to the vocational goal…
+            Based on the official L&I guidelines,{" "}
+            <strong className="font-semibold text-ink">
+              mileage reimbursement is NOT allowed in Skill Enhancement Training (SET)
+            </strong>
+            .
           </p>
-          <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-copper">
-            Citations · WAC 296-19A-100 · L&I provider guidelines
+          <p>
+            The SET Guidelines explicitly state that &ldquo;SET does not cover travel or
+            accommodation expenses&rdquo; [SET Guidelines for Vocational Providers]. This means
+            workers cannot be reimbursed for mileage, lodging, or other travel costs associated with
+            attending SET courses.
           </p>
+          <p>
+            Additionally, the guidelines clarify that &ldquo;A worker cannot be reimbursed through
+            SET&rdquo; [SET Guidelines for Vocational Providers], which reinforces that SET funding
+            does not cover any reimbursement to the worker, including mileage.
+          </p>
+          <div>
+            <p className="font-semibold text-ink">What SET does cover:</p>
+            <p className="mt-1">
+              SET funding may cover tuition, equipment, technology, or software needed to
+              participate effectively in the training, but these costs are paid directly to approved
+              providers with L&I provider accounts—not reimbursed to the worker [2026MARFSChapter25].
+            </p>
+          </div>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-copper">Sources</p>
+            <ul className="mt-1.5 space-y-1 text-[11px] leading-snug">
+              <li>
+                SET Guidelines for Vocational Providers —{" "}
+                <span className="break-all text-copper">
+                  https://lni.wa.gov/claims/_docs/SET_Guidelines.pdf
+                </span>
+              </li>
+              <li>
+                2026MARFSChapter25 —{" "}
+                <span className="break-all text-copper">
+                  https://lni.wa.gov/patient-care/billing-payments/marfsdocs/2026/2026MARFSChapter25.pdf
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 const modules = [
   { name: "Updates", blurb: "Announcements, key dates, ticker" },
-  { name: "Requests", blurb: "Internal helpdesk without email chaos" },
+  { name: "Requests", blurb: "Internal helpdesk tickets without email chaos" },
   { name: "Voc Hotline", blurb: "WAC & L&I answers with citations" },
   { name: "Payroll", blurb: "Rates, leave, stubs, analytics" },
   { name: "HR", blurb: "Directory, onboarding, reviews" },
@@ -94,7 +94,7 @@ export default function Home() {
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-mist/75">
               From the morning dashboard to payroll and HR, Vocational Practice Management keeps
-              your firm aligned without using and paying for five unrelated tools.
+              your firm aligned without using and paying for multiple unrelated tools.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -115,12 +115,12 @@ export default function Home() {
         <FeatureBlock
           eyebrow="Updates"
           title="Keep every counselor on the same page."
-          body="Publish updates and reminders, track key dates with countdowns, run a live ticker, and surface dismissible announcements—so policy changes and deadlines actually get seen."
+          body="Publish updates and reminders, track key dates with countdowns, run a live ticker, and popup announcements—so policy changes and deadlines actually get seen."
           mock={<UpdatesMock />}
         />
         <FeatureBlock
           eyebrow="Requests"
-          title="Replace email chaos with a real queue."
+          title="Replace email chaos with a real ticketing system."
           body="Staff submit requests with priority and category. Agents assign, reply, and leave internal notes. Owners see what’s open without digging through threads."
           mock={<RequestsMock />}
           reverse
@@ -133,7 +133,7 @@ export default function Home() {
         />
         <FeatureBlock
           eyebrow="Payroll"
-          title="Rates, leave, and stubs that match how you bill."
+          title="Automate how your firm pays your counselors."
           body="Manage employee rates, PTO and sick balances, pay stub delivery, and spreadsheet analysis for L&I-style invoice verification—so payroll and billing stay aligned."
           mock={<PayrollMock />}
           reverse

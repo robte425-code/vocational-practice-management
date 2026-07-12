@@ -32,7 +32,7 @@ export default function Home() {
               Vocational Practice Management
             </p>
             <h1 className="animate-rise-delay mt-6 font-display text-[2.15rem] leading-[1.12] tracking-tight text-ink sm:text-5xl md:text-[3.25rem]">
-              Run your voc firm with one clear operating system.
+              Unified back-office and counselor tools for day-to-day practice management.
             </h1>
             <p className="animate-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
               Built for Washington vocational rehabilitation owners and managers—align counselors,

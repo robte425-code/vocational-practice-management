@@ -161,7 +161,7 @@ export default function Home() {
                 If you lead a Washington vocational rehabilitation practice, you balance compliance,
                 counselors in the field, and the business of running a firm. Vocational Practice
                 Management is built for that world—not generic office software dressed up for
-                healthcare.
+                voc rehab firms.
               </p>
             </Reveal>
             <Reveal>

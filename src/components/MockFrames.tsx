@@ -22,29 +22,80 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
       <Chrome title="Dashboard" />
       <MockTicker />
       <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-3 p-5">
-          <div className="flex items-center justify-between">
-            <p className="font-display text-lg text-ink">Updates & reminders</p>
-            <span className="rounded-full bg-mist px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink-soft">
-              Live
-            </span>
-          </div>
-          {[
-            {
-              title: "Plan Development & Implementation: Rights & Responsibilities (2026 Updates)",
-              meta: "Jul 9",
-            },
-            { title: "Vocational Conference - Receipts", meta: "Jul 8" },
-            { title: "AI Note-Taking and AI Summary Tools During Meetings", meta: "Jul 2" },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-lg border border-[var(--line)] bg-paper/80 px-3.5 py-3"
-            >
-              <p className="text-sm font-semibold leading-snug text-ink">{item.title}</p>
-              <p className="mt-1 text-xs text-ink-soft/70">{item.meta}</p>
+        <div className="border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-t-0">
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <div className="flex min-w-0 items-center gap-2.5">
+              <div className="h-7 w-1 shrink-0 rounded-full bg-amber-400" aria-hidden />
+              <p className="text-base font-semibold tracking-tight text-stone-900">
+                Updates & Reminders
+              </p>
             </div>
-          ))}
+            <span className="shrink-0 text-[11px] font-medium text-amber-700">Archive</span>
+          </div>
+          <ul className="max-h-[28rem] space-y-2.5 overflow-y-auto pr-0.5">
+            {[
+              {
+                title:
+                  "Plan Development & Implementation: Rights & Responsibilities (2026 Updates)",
+                body: "L&I has updated the Rights & Responsibilities documents for Plan Development and Plan Implementation. The updated versions will be added to Gardiant soon.",
+                published: "Jul 9",
+                isNew: true,
+              },
+              {
+                title: "Vocational Conference - Receipts",
+                body: "If you are attending this week's vocational conference, thank you! Just a reminder: save your hotel and meal receipts for reimbursement. Actual itemized receipts are required.",
+                published: "Jul 8",
+                isNew: true,
+              },
+              {
+                title: "AI Note-Taking and AI Summary Tools During Meetings",
+                body: "This morning, we spoke with our liability carrier and the risk management firm they directed us to contact. Please review the new Internal Memo before using AI note-taking tools in meetings.",
+                published: "Jul 2",
+                isNew: false,
+              },
+              {
+                title: "QA Plan Addendum",
+                body: "A QA Plan Addendum has been prepared in response to our recent QA Validation meeting with L&I. Please review the Plan Addendum, which will also be reviewed during our monthly meeting.",
+                published: "Jun 30",
+                isNew: false,
+              },
+              {
+                title: "Vocational Provider Newsletter",
+                body: "The latest vocational provider newsletter from L&I is available.",
+                published: "Jun 30",
+                isNew: false,
+              },
+              {
+                title: "Work Products - JAs",
+                body: "Job Analysis (JA) Development — Common Errors and Best Practices. During our review of JAs in the JA bank, we identified several recurring errors in JA development.",
+                published: "Jun 25",
+                isNew: false,
+              },
+            ].map((item) => (
+              <li
+                key={item.title}
+                className="rounded-xl border border-stone-200/80 bg-white p-3 shadow-sm"
+              >
+                {item.isNew && (
+                  <span className="mb-1.5 inline-block rounded-full bg-red-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
+                    New
+                  </span>
+                )}
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="min-w-0 flex-1 text-[13px] font-semibold leading-snug text-stone-900">
+                    {item.title}
+                  </p>
+                  <span className="shrink-0 text-[10px] text-stone-400">
+                    Published: {item.published}
+                  </span>
+                </div>
+                <p className="mt-1.5 line-clamp-2 text-[11px] leading-relaxed text-stone-600">
+                  {item.body}
+                </p>
+                <span className="mt-1 block text-[11px] font-medium text-amber-600">… More</span>
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-l md:border-t-0">
           <div className="mb-3 flex items-center gap-2.5">

@@ -1,3 +1,5 @@
+import { MockTicker } from "@/components/MockTicker";
+
 function Chrome({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-3 border-b border-[var(--line)] px-4 py-2.5">
@@ -18,6 +20,7 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
   return (
     <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Dashboard" />
+      <MockTicker />
       <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-3 p-5">
           <div className="flex items-center justify-between">
@@ -27,15 +30,18 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             </span>
           </div>
           {[
-            { title: "L&I report deadlines this week", meta: "Posted today" },
-            { title: "Office closed Friday — spring training", meta: "Posted yesterday" },
-            { title: "New WAC guidance summary available", meta: "Mar 12" },
+            {
+              title: "Plan Development & Implementation: Rights & Responsibilities (2026 Updates)",
+              meta: "Jul 9",
+            },
+            { title: "Vocational Conference - Receipts", meta: "Jul 8" },
+            { title: "AI Note-Taking and AI Summary Tools During Meetings", meta: "Jul 2" },
           ].map((item) => (
             <div
               key={item.title}
               className="rounded-lg border border-[var(--line)] bg-paper/80 px-3.5 py-3"
             >
-              <p className="text-sm font-semibold text-ink">{item.title}</p>
+              <p className="text-sm font-semibold leading-snug text-ink">{item.title}</p>
               <p className="mt-1 text-xs text-ink-soft/70">{item.meta}</p>
             </div>
           ))}
@@ -46,22 +52,18 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
           </p>
           <ul className="mt-4 space-y-3">
             {[
-              { days: "4", label: "Quarterly billing review" },
-              { days: "12", label: "Staff meeting — Bellevue" },
-              { days: "21", label: "Benefits enrollment closes" },
+              { days: "4", label: "On-the-Job Recovery Webinar" },
+              { days: "25", label: "Monthly Meeting - Mandatory" },
+              { days: "27", label: "Submit July Closed Case Info." },
             ].map((d) => (
               <li key={d.label} className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-white font-display text-lg text-copper">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white font-display text-lg text-copper">
                   {d.days}
                 </span>
-                <span className="text-sm text-ink-soft">{d.label}</span>
+                <span className="text-sm leading-snug text-ink-soft">{d.label}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-5 overflow-hidden rounded-md bg-ink px-3 py-2 text-[11px] text-mist">
-            <span className="opacity-70">Ticker · </span>
-            Reminder: submit travel vouchers by Friday noon
-          </div>
         </div>
       </div>
     </div>

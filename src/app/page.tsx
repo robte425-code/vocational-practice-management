@@ -35,7 +35,7 @@ export default function Home() {
               Unified back-office and counselor tools for day-to-day practice management.
             </h1>
             <p className="animate-rise-delay-2 mt-5 max-w-md text-base leading-relaxed text-ink-soft sm:text-lg">
-              Built for Washington vocational rehabilitation owners and managers—align counselors,
+              Built for Washington State Voc firm owners and managers—align counselors,
               unblock ops, stay compliant, and pay people accurately.
             </p>
             <div className="animate-rise-delay-2 mt-8 flex flex-wrap items-center gap-3">

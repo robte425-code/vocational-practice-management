@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 /** Real ticker lines from the Updates dashboard (TEAM-branded lines omitted). */
 const TICKER_ITEMS = [
   "Plan Dev and Plan Imp R&R docs are temporarily unavailable in Gardiant. Updated versions will be posted soon!",
-  "Congratulations, Avi and Melanie, on passing the CDMS exam!",
+  "Congratulations, Jordan and Sam, on passing the CDMS exam!",
   "The Voc Hotline is here! Ask voc-related questions and get instant answers — improving daily.",
   "Phishing emails continue. Do not enter your email address and password to access information received via email.",
   "AWA Closure? Complete an Exit Interview — and use activity code \"Exit Interview\" — to support client transition.",

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { emailConfigured, sendEmail } from "@/lib/email";
 
 type DemoBody = {
   name?: string;
@@ -11,6 +12,14 @@ type DemoBody = {
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 export async function POST(request: Request) {
@@ -35,7 +44,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.DEMO_INBOX_EMAIL?.trim() || "hello@vocationalpracticemanagement.com";
+  const to = process.env.DEMO_INBOX_EMAIL?.trim() || "ghim@voc-hotline.org";
   const subject = `Demo request — ${firm}`;
   const text = [
     `Name: ${name}`,
@@ -46,40 +55,27 @@ export async function POST(request: Request) {
     "",
     message || "(no message)",
   ].join("\n");
+  const html = [
+    `<p><strong>Name:</strong> ${escapeHtml(name)}</p>`,
+    `<p><strong>Firm:</strong> ${escapeHtml(firm)}</p>`,
+    `<p><strong>Email:</strong> ${escapeHtml(email)}</p>`,
+    `<p><strong>Phone:</strong> ${escapeHtml(phone || "—")}</p>`,
+    `<p><strong>Firm size:</strong> ${escapeHtml(firmSize || "—")}</p>`,
+    `<p>${escapeHtml(message || "(no message)").replace(/\n/g, "<br>")}</p>`,
+  ].join("\n");
 
-  const resendKey = process.env.RESEND_API_KEY?.trim();
-  const from = process.env.DEMO_FROM_EMAIL?.trim() || "onboarding@resend.dev";
-
-  if (resendKey) {
+  if (emailConfigured()) {
     try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from,
-          to: [to],
-          reply_to: email,
-          subject,
-          text,
-        }),
+      await sendEmail({
+        to,
+        subject,
+        html,
+        text,
+        replyTo: email,
       });
-      if (!res.ok) {
-        const detail = await res.text().catch(() => "");
-        console.error("Resend error", res.status, detail);
-        return NextResponse.json(
-          {
-            error: "Could not send email. Opening your mail client instead.",
-            mailto: `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`,
-          },
-          { status: 502 }
-        );
-      }
       return NextResponse.json({ ok: true });
     } catch (err) {
-      console.error("Resend request failed", err);
+      console.error("Postmark request failed", err);
       return NextResponse.json(
         {
           error: "Could not send email. Opening your mail client instead.",
@@ -90,11 +86,10 @@ export async function POST(request: Request) {
     }
   }
 
-  // No Resend key: accept the lead and return a mailto for the client to open.
+  // No Postmark: accept the lead and return success (suitable for local demos).
   console.info("[demo lead]", { name, firm, email, phone, firmSize, message });
   return NextResponse.json({
     ok: true,
     delivered: "logged",
-    mailto: `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`,
   });
 }

@@ -220,15 +220,6 @@ export default function Home() {
               mind—using sample environments like CounselWorks so you can see how a voc practice
               actually runs day to day.
             </p>
-            <p className="mt-6 text-sm text-ink-soft/80">
-              Prefer email?{" "}
-              <a
-                className="font-semibold text-copper underline-offset-2 hover:underline"
-                href="mailto:hello@vocationalpracticemanagement.com"
-              >
-                hello@vocationalpracticemanagement.com
-              </a>
-            </p>
           </Reveal>
           <Reveal>
             <DemoForm />

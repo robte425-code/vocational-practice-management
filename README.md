@@ -29,26 +29,28 @@ npm start
 
 `POST /api/demo` accepts: `name`, `firm`, `email`, `phone`, `firmSize`, `message`.
 
-Without Resend configured, leads are logged server-side and the API returns success (suitable for local demos).
+Without Postmark configured, leads are logged server-side and the API returns success (suitable for local demos).
 
-### Optional Resend delivery
+### Optional Postmark delivery
 
-Create `.env.local`:
+Uses the same env vars as the Requests app. Create `.env.local` (or set in Vercel):
 
 ```bash
-RESEND_API_KEY=re_xxx
-DEMO_FROM_EMAIL=Vocational Practice Management <onboarding@resend.dev>
-DEMO_INBOX_EMAIL=you@yourdomain.com
+POSTMARK_SERVER_TOKEN=
+EMAIL_FROM=Vocational Practice Management <noreply@your-verified-domain>
+# Optional; defaults to "outbound"
+# POSTMARK_MESSAGE_STREAM=outbound
+DEMO_INBOX_EMAIL=ghim@voc-hotline.org
 ```
 
-Use a verified Resend domain for production `DEMO_FROM_EMAIL`.
+`EMAIL_FROM` must be a verified Postmark sender signature or domain.
 
 ## Deploy to Vercel
 
 1. Push this repo to GitHub (new repository).
 2. In Vercel → **Add New Project** → import the repo.
 3. Framework preset: Next.js (auto-detected).
-4. Add env vars if using Resend (`RESEND_API_KEY`, `DEMO_FROM_EMAIL`, `DEMO_INBOX_EMAIL`).
+4. Add env vars if using Postmark (`POSTMARK_SERVER_TOKEN`, `EMAIL_FROM`, `DEMO_INBOX_EMAIL`; same Postmark vars as Requests).
 5. Deploy. Production updates on every push to `main`.
 
 No domain is required for the first deploy; attach a custom domain later in Vercel project settings.

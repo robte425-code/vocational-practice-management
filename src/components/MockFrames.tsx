@@ -18,21 +18,21 @@ function Chrome({ title }: { title: string }) {
 
 export function UpdatesMock({ className = "" }: { className?: string }) {
   return (
-    <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
+    <div className={`mock-window max-w-full overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Dashboard" />
       <MockTicker />
-      <div className="grid gap-0 md:grid-cols-[1.1fr_0.9fr] md:items-stretch">
-        <div className="flex min-h-0 flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:h-0 md:min-h-full md:border-t-0">
-          <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
-            <div className="flex min-w-0 items-center gap-2.5">
+      <div className="grid max-h-[22rem] grid-cols-1 gap-0 overflow-hidden sm:max-h-none md:grid-cols-[1.1fr_0.9fr] md:items-stretch">
+        <div className="flex min-h-0 min-w-0 flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-3 sm:p-4 md:h-0 md:min-h-full md:border-t-0">
+          <div className="mb-2.5 flex shrink-0 items-center justify-between gap-2 sm:mb-3">
+            <div className="flex min-w-0 items-center gap-2 sm:gap-2.5">
               <div className="h-7 w-1 shrink-0 rounded-full bg-amber-400" aria-hidden />
-              <p className="text-base font-semibold tracking-tight text-stone-900">
+              <p className="truncate text-sm font-semibold tracking-tight text-stone-900 sm:text-base">
                 Updates & Reminders
               </p>
             </div>
             <span className="shrink-0 text-[11px] font-medium text-amber-700">Archive</span>
           </div>
-          <ul className="min-h-0 flex-1 space-y-2.5 overflow-y-auto pr-0.5">
+          <ul className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-0.5 sm:space-y-2.5">
             {[
               {
                 title:
@@ -56,15 +56,15 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             ].map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-stone-200/80 bg-white p-3 shadow-sm"
+                className="rounded-xl border border-stone-200/80 bg-white p-2.5 shadow-sm sm:p-3"
               >
                 {item.isNew && (
                   <span className="mb-1.5 inline-block rounded-full bg-red-500 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white">
                     New
                   </span>
                 )}
-                <div className="flex items-baseline justify-between gap-2">
-                  <p className="min-w-0 flex-1 text-[13px] font-semibold leading-snug text-stone-900">
+                <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                  <p className="min-w-0 flex-1 text-[12px] font-semibold leading-snug text-stone-900 sm:text-[13px]">
                     {item.title}
                   </p>
                   <span className="shrink-0 text-[10px] text-stone-400">
@@ -79,7 +79,7 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 md:border-l md:border-t-0">
+        <div className="hidden min-w-0 flex-col border-t border-[var(--line)] bg-[#f5f5f4]/80 p-4 sm:flex md:border-l md:border-t-0">
           <div className="mb-3 flex items-center gap-2.5">
             <div className="h-7 w-1 shrink-0 rounded-full bg-emerald-400" aria-hidden />
             <p className="text-base font-semibold tracking-tight text-stone-900">Key dates</p>
@@ -154,10 +154,10 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
 
 export function RequestsMock({ className = "" }: { className?: string }) {
   return (
-    <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
+    <div className={`mock-window max-w-full overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Requests" />
-      <div className="p-5">
-        <div className="mb-4 flex flex-wrap gap-2">
+      <div className="p-3 sm:p-5">
+        <div className="mb-3 flex flex-wrap gap-2 sm:mb-4">
           {["Open 7", "In progress 4", "Waiting 2"].map((chip) => (
             <span
               key={chip}
@@ -175,11 +175,13 @@ export function RequestsMock({ className = "" }: { className?: string }) {
           ].map((row) => (
             <div
               key={row.id}
-              className="grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-lg border border-[var(--line)] px-3 py-2.5 text-sm"
+              className="flex items-start justify-between gap-3 rounded-lg border border-[var(--line)] px-3 py-2.5 text-sm"
             >
-              <span className="font-mono text-[11px] text-ink-soft/60">{row.id}</span>
-              <span className="truncate font-medium text-ink">{row.subject}</span>
-              <span className="rounded-md bg-mist px-2 py-0.5 text-[11px] text-ink-soft">
+              <div className="min-w-0">
+                <span className="font-mono text-[11px] text-ink-soft/60">{row.id}</span>
+                <p className="mt-0.5 font-medium leading-snug text-ink">{row.subject}</p>
+              </div>
+              <span className="shrink-0 rounded-md bg-mist px-2 py-0.5 text-[11px] text-ink-soft">
                 {row.status}
               </span>
             </div>
@@ -192,13 +194,13 @@ export function RequestsMock({ className = "" }: { className?: string }) {
 
 export function HotlineMock({ className = "" }: { className?: string }) {
   return (
-    <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
+    <div className={`mock-window max-w-full overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Voc Hotline" />
-      <div className="max-h-[28rem] space-y-3 overflow-y-auto p-5">
-        <div className="ml-auto max-w-[90%] rounded-2xl rounded-br-md bg-ink px-4 py-3 text-sm text-mist">
+      <div className="max-h-[22rem] space-y-3 overflow-y-auto p-3 sm:max-h-[28rem] sm:p-5">
+        <div className="ml-auto max-w-[92%] rounded-2xl rounded-br-md bg-ink px-3.5 py-2.5 text-[13px] leading-snug text-mist sm:max-w-[90%] sm:px-4 sm:py-3 sm:text-sm">
           Is mileage reimbursement allowed in Skill Enhancement Training?
         </div>
-        <div className="max-w-[95%] space-y-3 rounded-2xl rounded-bl-md border border-[var(--line)] bg-paper px-4 py-3 text-sm leading-relaxed text-ink-soft">
+        <div className="max-w-full space-y-2.5 rounded-2xl rounded-bl-md border border-[var(--line)] bg-paper px-3.5 py-2.5 text-[13px] leading-relaxed text-ink-soft sm:max-w-[95%] sm:space-y-3 sm:px-4 sm:py-3 sm:text-sm">
           <p>
             Based on the official L&I guidelines,{" "}
             <strong className="font-semibold text-ink">
@@ -212,12 +214,12 @@ export function HotlineMock({ className = "" }: { className?: string }) {
             workers cannot be reimbursed for mileage, lodging, or other travel costs associated with
             attending SET courses.
           </p>
-          <p>
+          <p className="hidden sm:block">
             Additionally, the guidelines clarify that &ldquo;A worker cannot be reimbursed through
             SET&rdquo; [SET Guidelines for Vocational Providers], which reinforces that SET funding
             does not cover any reimbursement to the worker, including mileage.
           </p>
-          <div>
+          <div className="hidden sm:block">
             <p className="font-semibold text-ink">What SET does cover:</p>
             <p className="mt-1">
               SET funding may cover tuition, equipment, technology, or software needed to
@@ -230,15 +232,11 @@ export function HotlineMock({ className = "" }: { className?: string }) {
             <ul className="mt-1.5 space-y-1 text-[11px] leading-snug">
               <li>
                 SET Guidelines for Vocational Providers —{" "}
-                <span className="break-all text-copper">
-                  https://lni.wa.gov/claims/_docs/SET_Guidelines.pdf
-                </span>
+                <span className="break-all text-copper">lni.wa.gov/…/SET_Guidelines.pdf</span>
               </li>
               <li>
                 2026MARFSChapter25 —{" "}
-                <span className="break-all text-copper">
-                  https://lni.wa.gov/patient-care/billing-payments/marfsdocs/2026/2026MARFSChapter25.pdf
-                </span>
+                <span className="break-all text-copper">lni.wa.gov/…/2026MARFSChapter25.pdf</span>
               </li>
             </ul>
           </div>
@@ -250,9 +248,9 @@ export function HotlineMock({ className = "" }: { className?: string }) {
 
 export function PayrollMock({ className = "" }: { className?: string }) {
   return (
-    <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
+    <div className={`mock-window max-w-full overflow-hidden rounded-xl ${className}`}>
       <Chrome title="Payroll" />
-      <div className="p-5">
+      <div className="p-3 sm:p-5">
         <p className="font-display text-lg text-ink">Leave balances</p>
         <div className="mt-4 space-y-3">
           {[
@@ -262,10 +260,10 @@ export function PayrollMock({ className = "" }: { className?: string }) {
           ].map((person) => (
             <div
               key={person.name}
-              className="flex items-center justify-between rounded-lg border border-[var(--line)] px-3.5 py-3"
+              className="flex items-center justify-between gap-3 rounded-lg border border-[var(--line)] px-3 py-3 sm:px-3.5"
             >
-              <span className="text-sm font-semibold text-ink">{person.name}</span>
-              <span className="text-xs text-ink-soft">
+              <span className="min-w-0 truncate text-sm font-semibold text-ink">{person.name}</span>
+              <span className="shrink-0 text-xs text-ink-soft">
                 PTO {person.pto} · Sick {person.sick}
               </span>
             </div>
@@ -281,10 +279,10 @@ export function PayrollMock({ className = "" }: { className?: string }) {
 
 export function HrMock({ className = "" }: { className?: string }) {
   return (
-    <div className={`mock-window overflow-hidden rounded-xl ${className}`}>
+    <div className={`mock-window max-w-full overflow-hidden rounded-xl ${className}`}>
       <Chrome title="HR" />
       <div className="grid gap-0 sm:grid-cols-2">
-        <div className="space-y-3 border-b border-[var(--line)] p-5 sm:border-b-0 sm:border-r">
+        <div className="space-y-3 border-b border-[var(--line)] p-3 sm:border-b-0 sm:border-r sm:p-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft/60">
             Onboarding
           </p>
@@ -296,26 +294,26 @@ export function HrMock({ className = "" }: { className?: string }) {
           ].map((s) => (
             <div key={s.step} className="flex items-center gap-2 text-sm">
               <span
-                className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] ${
+                className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] ${
                   s.done ? "bg-ink text-mist" : "border border-[var(--line)] text-ink-soft/50"
                 }`}
               >
                 {s.done ? "✓" : ""}
               </span>
-              <span className={s.done ? "text-ink" : "text-ink-soft"}>{s.step}</span>
+              <span className={`min-w-0 ${s.done ? "text-ink" : "text-ink-soft"}`}>{s.step}</span>
             </div>
           ))}
         </div>
-        <div className="space-y-3 p-5">
+        <div className="space-y-3 p-3 sm:p-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-ink-soft/60">
             Acknowledgements
           </p>
           <div className="rounded-lg border border-[var(--line)] bg-paper p-3">
-            <p className="text-sm font-semibold text-ink">401K Contribution Change Form</p>
+            <p className="text-sm font-semibold leading-snug text-ink">401K Contribution Change Form</p>
             <p className="mt-1 text-xs text-ink-soft">Awaiting signature</p>
           </div>
           <div className="rounded-lg border border-[var(--line)] bg-paper p-3">
-            <p className="text-sm font-semibold text-ink">John Smith Offer Letter</p>
+            <p className="text-sm font-semibold leading-snug text-ink">John Smith Offer Letter</p>
             <p className="mt-1 text-xs text-ink-soft">Awaiting countersign</p>
           </div>
         </div>

@@ -33,6 +33,24 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-source-sans), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-delay-2,
+  .animate-mock,
+  .reveal {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 ::selection {
@@ -100,6 +118,8 @@ body {
 }
 
 .mock-window {
+  width: 100%;
+  max-width: 100%;
   border: 1px solid var(--line);
   background: #fff;
   box-shadow:

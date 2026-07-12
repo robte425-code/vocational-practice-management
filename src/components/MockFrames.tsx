@@ -169,9 +169,9 @@ export function RequestsMock({ className = "" }: { className?: string }) {
         </div>
         <div className="space-y-2">
           {[
-            { id: "CW-184", subject: "Badge access for new counselor", pri: "Normal", status: "Open" },
-            { id: "CW-179", subject: "Laptop replacement — field kit", pri: "High", status: "In progress" },
-            { id: "CW-171", subject: "Update phone book extension", pri: "Low", status: "Waiting" },
+            { id: "CW-184", subject: "Update PD extension date for John Smith", pri: "Normal", status: "Open" },
+            { id: "CW-179", subject: "Close referral for Sarah Johnson", pri: "High", status: "In progress" },
+            { id: "CW-171", subject: "Process office supply reimbursement", pri: "Low", status: "Waiting" },
           ].map((row) => (
             <div
               key={row.id}
@@ -311,15 +311,12 @@ export function HrMock({ className = "" }: { className?: string }) {
             Acknowledgements
           </p>
           <div className="rounded-lg border border-[var(--line)] bg-paper p-3">
-            <p className="text-sm font-semibold text-ink">Safety policy 2026</p>
-            <p className="mt-1 text-xs text-ink-soft">Awaiting countersign · 2 of 18 complete</p>
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fog">
-              <div className="h-full w-[12%] rounded-full bg-copper" />
-            </div>
+            <p className="text-sm font-semibold text-ink">401K Contribution Change Form</p>
+            <p className="mt-1 text-xs text-ink-soft">Awaiting signature</p>
           </div>
           <div className="rounded-lg border border-[var(--line)] bg-paper p-3">
-            <p className="text-sm font-semibold text-ink">Performance cycle — Q1</p>
-            <p className="mt-1 text-xs text-ink-soft">Self reviews open through Apr 3</p>
+            <p className="text-sm font-semibold text-ink">John Smith Offer Letter</p>
+            <p className="mt-1 text-xs text-ink-soft">Awaiting countersign</p>
           </div>
         </div>
       </div>

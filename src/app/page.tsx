@@ -147,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Audience */}
-      <section id="audience" className="section-atmosphere border-t border-[var(--line)] py-20 sm:py-28">
+      <section id="audience" className="section-atmosphere py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <Reveal>

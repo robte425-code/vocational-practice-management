@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vocational Practice Management — Marketing site
 
-## Getting Started
+Marketing website for **Vocational Practice Management** (secondary mark: VPM), aimed at Washington vocational rehabilitation firm owners and managers.
 
-First, run the development server:
+UI mockups use a fictional firm named **CounselWorks**. Do not use legacy internal suite brand names on this site.
+
+## Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS v4
+- Fonts: Fraunces (display) + Source Sans 3
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Demo form / email
 
-## Learn More
+`POST /api/demo` accepts: `name`, `firm`, `email`, `phone`, `firmSize`, `message`.
 
-To learn more about Next.js, take a look at the following resources:
+Without Resend configured, leads are logged server-side and the API returns success (suitable for local demos).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Optional Resend delivery
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create `.env.local`:
 
-## Deploy on Vercel
+```bash
+RESEND_API_KEY=re_xxx
+DEMO_FROM_EMAIL=Vocational Practice Management <onboarding@resend.dev>
+DEMO_INBOX_EMAIL=you@yourdomain.com
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Use a verified Resend domain for production `DEMO_FROM_EMAIL`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+
+1. Push this repo to GitHub (new repository).
+2. In Vercel → **Add New Project** → import the repo.
+3. Framework preset: Next.js (auto-detected).
+4. Add env vars if using Resend (`RESEND_API_KEY`, `DEMO_FROM_EMAIL`, `DEMO_INBOX_EMAIL`).
+5. Deploy. Production updates on every push to `main`.
+
+No domain is required for the first deploy; attach a custom domain later in Vercel project settings.
+
+## Project layout
+
+```
+src/app/page.tsx            # Landing page
+src/app/layout.tsx          # Fonts + metadata
+src/app/api/demo/route.ts   # Demo lead capture
+src/components/             # Header, form, mocks, reveal
+src/app/globals.css         # Brand tokens + motion
+```

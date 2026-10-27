@@ -8,7 +8,12 @@ type DemoBody = {
   phone?: string;
   firmSize?: string;
   message?: string;
+  /** Honeypot: hidden in the form, so only bots fill it in. */
+  website?: string;
 };
+
+const MAX_FIELD_LENGTH = 200;
+const MAX_MESSAGE_LENGTH = 5000;
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -37,9 +42,24 @@ export async function POST(request: Request) {
   const firmSize = String(body.firmSize || "").trim();
   const message = String(body.message || "").trim();
 
+  // Pretend success so bots don't learn to skip the field.
+  if (String(body.website || "").trim()) {
+    return NextResponse.json({ ok: true });
+  }
+
   if (!name || !firm || !email || !isEmail(email)) {
     return NextResponse.json(
       { error: "Name, firm, and a valid email are required." },
+      { status: 400 }
+    );
+  }
+
+  if (
+    [name, firm, email, phone, firmSize].some((v) => v.length > MAX_FIELD_LENGTH) ||
+    message.length > MAX_MESSAGE_LENGTH
+  ) {
+    return NextResponse.json(
+      { error: `Please keep fields under ${MAX_FIELD_LENGTH} characters and the message under ${MAX_MESSAGE_LENGTH}.` },
       { status: 400 }
     );
   }
@@ -86,7 +106,17 @@ export async function POST(request: Request) {
     }
   }
 
-  // No Postmark: accept the lead and return success (suitable for local demos).
+  // Deployed without Postmark: fail loudly instead of telling the visitor it worked, and keep
+  // their details out of the logs.
+  if (process.env.NODE_ENV === "production") {
+    console.error("[demo lead] POSTMARK_SERVER_TOKEN / EMAIL_FROM not configured; request not delivered");
+    return NextResponse.json(
+      { error: "Demo requests are temporarily unavailable. Please try again later." },
+      { status: 503 }
+    );
+  }
+
+  // Local development without Postmark: log the lead instead of sending it.
   console.info("[demo lead]", { name, firm, email, phone, firmSize, message });
   return NextResponse.json({
     ok: true,

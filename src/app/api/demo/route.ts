@@ -64,7 +64,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const to = process.env.DEMO_INBOX_EMAIL?.trim() || "ghim@voc-hotline.org";
+  // No built-in default: the inbox address stays out of the source and is never sent to visitors.
+  const to = process.env.DEMO_INBOX_EMAIL?.trim();
   const subject = `Demo request — ${firm}`;
   const text = [
     `Name: ${name}`,
@@ -84,7 +85,7 @@ export async function POST(request: Request) {
     `<p>${escapeHtml(message || "(no message)").replace(/\n/g, "<br>")}</p>`,
   ].join("\n");
 
-  if (emailConfigured()) {
+  if (emailConfigured() && to) {
     try {
       await sendEmail({
         to,
@@ -97,19 +98,18 @@ export async function POST(request: Request) {
     } catch (err) {
       console.error("Postmark request failed", err);
       return NextResponse.json(
-        {
-          error: "Could not send email. Opening your mail client instead.",
-          mailto: `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`,
-        },
+        { error: "Could not send your request. Please try again in a few minutes." },
         { status: 502 }
       );
     }
   }
 
-  // Deployed without Postmark: fail loudly instead of telling the visitor it worked, and keep
-  // their details out of the logs.
+  // Deployed without Postmark or an inbox: fail loudly instead of telling the visitor it worked,
+  // and keep their details out of the logs.
   if (process.env.NODE_ENV === "production") {
-    console.error("[demo lead] POSTMARK_SERVER_TOKEN / EMAIL_FROM not configured; request not delivered");
+    console.error(
+      "[demo lead] POSTMARK_SERVER_TOKEN / EMAIL_FROM / DEMO_INBOX_EMAIL not configured; request not delivered"
+    );
     return NextResponse.json(
       { error: "Demo requests are temporarily unavailable. Please try again later." },
       { status: 503 }

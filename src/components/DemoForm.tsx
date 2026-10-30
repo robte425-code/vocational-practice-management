@@ -21,13 +21,10 @@ export function DemoForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = (await res.json().catch(() => ({}))) as { error?: string; mailto?: string };
+      const json = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
         setStatus("error");
         setError(json.error || "Something went wrong. Please try again.");
-        if (json.mailto) {
-          window.location.href = json.mailto;
-        }
         return;
       }
       setStatus("ok");

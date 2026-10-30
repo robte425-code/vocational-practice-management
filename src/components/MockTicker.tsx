@@ -2,12 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-/** Real ticker lines from the Updates dashboard (TEAM-branded lines omitted). */
+/** Sample ticker lines (invented; not real announcements). */
 const TICKER_ITEMS = [
-  "Congratulations, Jordan and Sam, on passing the CDMS exam!",
+  "Congratulations, Jordan and Sam, on earning your certifications!",
   "The Voc Hotline is here! Ask voc-related questions and get instant answers — improving daily.",
-  "Phishing emails continue. Do not enter your email address and password to access information received via email.",
-  "Access to CAC may be sporadic today.",
+  "Reminder: finish your annual compliance training by the end of the month.",
+  "The office is closed Monday for the holiday.",
 ];
 
 const SPEED_PPS = 40;

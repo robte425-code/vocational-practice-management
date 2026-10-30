@@ -40,7 +40,7 @@ POSTMARK_SERVER_TOKEN=
 EMAIL_FROM=Vocational Practice Management <noreply@your-verified-domain>
 # Optional; defaults to "outbound"
 # POSTMARK_MESSAGE_STREAM=outbound
-DEMO_INBOX_EMAIL=ghim@voc-hotline.org
+DEMO_INBOX_EMAIL=demos@your-domain
 ```
 
 `EMAIL_FROM` must be a verified Postmark sender signature or domain.
@@ -50,7 +50,7 @@ DEMO_INBOX_EMAIL=ghim@voc-hotline.org
 1. Push this repo to GitHub (new repository).
 2. In Vercel → **Add New Project** → import the repo.
 3. Framework preset: Next.js (auto-detected).
-4. Add env vars if using Postmark (`POSTMARK_SERVER_TOKEN`, `EMAIL_FROM`, `DEMO_INBOX_EMAIL`; same Postmark vars as Requests).
+4. Add the Postmark env vars (`POSTMARK_SERVER_TOKEN`, `EMAIL_FROM`, `DEMO_INBOX_EMAIL`). They're required in production: without them the demo form returns 503 instead of silently dropping requests.
 5. Deploy. Production updates on every push to `main`.
 
 No domain is required for the first deploy; attach a custom domain later in Vercel project settings.

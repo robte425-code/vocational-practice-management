@@ -35,21 +35,20 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
           <ul className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-0.5 sm:space-y-2.5">
             {[
               {
-                title:
-                  "Plan Development & Implementation: Rights & Responsibilities (2026 Updates)",
-                body: "L&I has updated the Rights & Responsibilities documents for Plan Development and Plan Implementation. The updated versions will be added to Gardiant soon.",
+                title: "Updated Referral Intake Forms",
+                body: "Revised referral intake forms are now in the shared document library. Please use them for all new referrals starting this week.",
                 published: "Jul 9",
                 isNew: true,
               },
               {
-                title: "Vocational Conference - Receipts",
-                body: "If you are attending this week's vocational conference, thank you! Just a reminder: save your hotel and meal receipts for reimbursement. Actual itemized receipts are required.",
+                title: "Team Lunch This Friday",
+                body: "Join us in the main conference room at noon on Friday. Reply to this update with any dietary needs so we can plan the order.",
                 published: "Jul 8",
                 isNew: true,
               },
               {
-                title: "Vocational Provider Newsletter",
-                body: "The latest vocational provider newsletter from L&I is available.",
+                title: "Quarterly Provider Newsletter",
+                body: "The latest quarterly provider newsletter is available in the resources section.",
                 published: "Jun 30",
                 isNew: false,
               },
@@ -87,8 +86,8 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
           <ul className="space-y-2.5">
             {[
               {
-                title: "On-the-Job Recovery Webinar",
-                body: "Update: Time is now 12:00–1:00 PM. L&I is hosting a webinar for vocational providers.",
+                title: "Provider Documentation Webinar",
+                body: "A one-hour webinar on documentation best practices for vocational providers, 12:00–1:00 PM.",
                 published: "Jun 2",
                 dateLabel: "Event date:",
                 dateValue: "Jul 15, 2026 at 12:00 PM",
@@ -96,8 +95,8 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
                 soon: true,
               },
               {
-                title: "Monthly Meeting - Mandatory",
-                body: "All monthly meetings will be mandatory starting August 5. First Wednesday of each month.",
+                title: "Quarterly All-Staff Meeting",
+                body: "Quarterly all-staff meeting in the main conference room. Agenda to follow.",
                 published: "Jul 1",
                 dateLabel: "Event date:",
                 dateValue: "Aug 5, 2026 at 12:00 PM",
@@ -105,8 +104,8 @@ export function UpdatesMock({ className = "" }: { className?: string }) {
                 soon: false,
               },
               {
-                title: "Submit July Closed Case Info.",
-                body: "Submit the completed case closure template via Requests.",
+                title: "Monthly Case Summaries Due",
+                body: "Submit this month's case summaries through Requests.",
                 published: "Jul 7",
                 dateLabel: "Due date:",
                 dateValue: "Aug 7, 2026 at 12:00 PM",
